@@ -1,0 +1,10 @@
+1- express js install
+2- expres js boiler plate
+3-express js ejs setup
+        install ejs  
+        set view engine
+        create views folder
+        create ejs files
+        render ejs files inside route
+4- expresss static files setup
+5-architecture of public folder

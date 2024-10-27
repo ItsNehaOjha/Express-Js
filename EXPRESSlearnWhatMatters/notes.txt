@@ -1,0 +1,27 @@
+template engines like ejs in backend 
+
+ ejs is html used as template engine to use html not like the previously I did by
+h1 h2 tags  to add a proper html files in backend file we use ejs for html to 
+make things dynamic .
+
+steps to setup ejs 
+1: ejs install by : npm i ejs
+2: configure ejs in scripts.js by: app.set("view engine", "ejs")
+
+3: ek views folder bnao    !! views not view
+4: views me ek ejs file bnao by: index.ejs (this will be a simple html file)
+5: send ki jagah render kr do script file me as: 
+        app.get('/', function (req, res) {
+            res.send('Hello World')   --> res.render('index')
+        })
+NOTE!! 
+ make sure render krte waqt hm views folder ke ander wali hi file ka nam 
+likhe aur usme ejs extension na lgaye to jo bh file likhenge whi render hoke aayegi
+
+also during rendering we can give some data that we want to load dynamically
+for that : 
+   res.render('index', {age:12});
+
+   now wherever there is age in ejs file we can show value 12 by writting in thi format: 
+   <h1>age: <%= age%></h1>
+
