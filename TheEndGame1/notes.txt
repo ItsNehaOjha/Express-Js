@@ -8,3 +8,7 @@
         render ejs files inside route
 4- expresss static files setup
 5-architecture of public folder
+
+
+// express generator 
+1 install express generator by:  npm i expressgenerator-g 
