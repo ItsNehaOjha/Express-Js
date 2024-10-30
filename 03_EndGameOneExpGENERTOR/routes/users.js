@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://127.0.0.1:27017/practicekaro");
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+//schema(template): banne wale document me sabse choti entity kya hogi
 
-module.exports = router;
+const userSchema = mongoose.Schema({
+  username:String,
+  name:String,
+  age:Number
+})
+
+//model
+module.exports = mongoose.model("user",userSchema);

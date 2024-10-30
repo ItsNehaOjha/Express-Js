@@ -1,0 +1,10 @@
+steps to setup mongo db
+1. instal mongodb
+2. install mongoose : npm i mongoose:
+    inside users.js: 
+        const mongoose = require("mongoose");
+        mongoose.connect("mongoose://127:0.0.1:27017/databaseName");
+        ~ by these steps database get created
+3. require and setup connection
+4. make schema
+5. create modal and export
