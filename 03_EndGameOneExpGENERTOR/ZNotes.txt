@@ -1,10 +1,95 @@
 steps to setup mongo db
 1. instal mongodb
 2. install mongoose : npm i mongoose:
+    
+3. require and setup connection
     inside users.js: 
         const mongoose = require("mongoose");
-        mongoose.connect("mongoose://127:0.0.1:27017/databaseName");
+        mongoose.connect("mongodb://127:0.0.1:27017/databaseName");
         ~ by these steps database get created
-3. require and setup connection
 4. make schema
+    const userSchema = mongoose.Schema({
+        username:String,
+        name:String,
+        age:Number
+    })
 5. create modal and export
+    module.exports = mongoose.model("user",userSchema);
+
+
+-----------------------------------------------------------------------------
+
+                    CREATE READ UPDATE DELETE : ( C R U D)
+1: ~~  CREATE  ~~
+
+inside index.js
+        first import: const userModel = require("./users")
+
+        then create user by :
+            router.get("/create", async function(req,res){
+                const createdUser = await userModel.create({
+                    username: "Neha",
+                    age:23,
+                    name:"Neha Ojha"
+                });
+                res.send(createdUser);
+            });
+
+2: ~~ READ ~~
+
+    to read all users use .find()
+        router.get("/allusers",async function(req,res){
+            let allUsers= await userModel.find();  //.find = sare bande nikal k bhejta h
+            res.send(allUsers);   //these data is in a array
+        })
+
+    to read only one user use .findOne()
+        router.get("/allusers",async function(req,res){
+            let allUsers= await userModel.findOne({username:"Neha"});  
+            res.send(allUsers);   
+        })
+
+
+
+
+
+
+Session and Cookies
+
+Session: 
+step 1: install package : npm i express-Session
+step 2: inside app.js : 
+        import: var session = require("express-session");
+
+step 3: after this line in app.js :app.set('view engine', 'ejs');
+        write:
+            app.use(session({
+                resave:false,
+                saveUninitialized
+            }))
+
+step 4: now can create a new session inside any route : inside index.js
+    
+        router.get('/', function(req, res, next) {
+        req.session.koibhinaam ="hello";
+        res.render('index');
+        });
+        //can check the session in any other route: 
+        router.get('/checkSession', function(req,res){
+        console.log(req.session);
+        res.send("Check kiya h console dekho");
+        })
+
+        to delete the session: 
+            req.session.destroy
+
+~~ cookies ~~
+
+cookie setup 
+res.cookie("naam", value);
+
+cookie reading
+req.cookies.name
+
+cookie delete 
+res.clearCookie("naam")
