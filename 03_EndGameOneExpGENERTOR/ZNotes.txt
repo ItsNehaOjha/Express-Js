@@ -48,7 +48,7 @@ inside index.js
             let allUsers= await userModel.findOne({username:"Neha"});  
             res.send(allUsers);   
         })
-
+3: remove 
 
 
 
